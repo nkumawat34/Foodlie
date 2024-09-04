@@ -9,7 +9,7 @@ import Tandoori_Chicken from '../Assets/tandoori_chicken.jpg'
 import Pizza from '../Assets/pizza.jpg'
 import { IoMdArrowBack } from "react-icons/io";
 import { IoArrowForward } from "react-icons/io5";
-import Images1 from '../components/images.json'
+import Images1 from './images.json'
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
