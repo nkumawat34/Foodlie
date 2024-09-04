@@ -31,7 +31,7 @@ export const addItemToCart = createAsyncThunk(
       const token=localStorage.getItem("token")
       const email = localStorage.getItem("email");
       const response = await axios.post(
-        `http://localhost:3001/api/cart/item/${email}`,
+        `https://foodlie-backend.onrender.com/api/cart/item/${email}`,
         { item },
         {
           headers: {
