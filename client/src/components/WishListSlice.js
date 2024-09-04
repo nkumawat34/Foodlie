@@ -8,7 +8,7 @@ export const fetchWishlistItems = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const email=localStorage.getItem("email")
-      const response = await axios.get(`http://localhost:3001/api/wishlistitem/${email}`);
+      const response = await axios.get(`https://foodlie-backend.onrender.com/api/wishlistitem/${email}`);
      // console.log(response.data.wishlist)
       return response.data.wishlist;
     } catch (error) {
@@ -25,7 +25,7 @@ export const addWishlistItem = createAsyncThunk(
       const email=localStorage.getItem("email")
       const token=localStorage.getItem("token")
       const response = await axios.post(
-        `http://localhost:3001/api/wishlistitem/${email}`,
+        `https://foodlie-backend.onrender.com/api/wishlistitem/${email}`,
         { item },
         {
           headers: {
@@ -52,7 +52,7 @@ export const removeWishlistItem = createAsyncThunk(
       const email=localStorage.getItem("email")
       const token=localStorage.getItem("token")
       const response = await axios.delete(
-        `http://localhost:3001/api/wishlistitem/${email}/${name}`,
+        `https://foodlie-backend.onrender.com/api/wishlistitem/${email}/${name}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the Authorization header
