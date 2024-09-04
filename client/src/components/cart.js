@@ -72,7 +72,7 @@ export default function Cart() {
         setTotal(total);
         // 3. Reset the local state for cart items
         setCartItems([]);
-        window.location.reload();
+
         // 4. Show a success message
         toast.success("Cart cleared successfully", {
             position: "bottom-right",

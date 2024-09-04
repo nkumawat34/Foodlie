@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Menu from '../Assets/menu.jpg'
 import { FaPlayCircle } from "react-icons/fa";
-
 import { IoMdArrowBack } from "react-icons/io";
 import { IoArrowForward } from "react-icons/io5";
 //import Images1 from './images.json'
