@@ -59,7 +59,7 @@ const navigate=useNavigate()
         <div className='flex gap-3 m-3 flex-wrap text-white justify-center'>
           {images.map((image)=>{
             
-            return <div> <img src={"/images/"+image+".jpg"} style={{width:"300px",height:"250px"}}/><h1 className='relative bottom-10 left-24 '>{image}</h1></div>
+            return <div> <img src={image+".jpg"} style={{width:"300px",height:"250px"}}/><h1 className='relative bottom-10 left-24 '>{image}</h1></div>
 
           })}
           <div className='text-black'><IoArrowForward onClick={()=>forward()}/></div>
