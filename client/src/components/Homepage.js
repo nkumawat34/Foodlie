@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Menu from '../Assets/menu.jpg'
 import { FaPlayCircle } from "react-icons/fa";
-
 import { IoMdArrowBack } from "react-icons/io";
 import { IoArrowForward } from "react-icons/io5";
-<<<<<<< HEAD
-//import Images1 from './images.json'
-=======
-import Images1 from './images.json'
->>>>>>> dc85e3a57a58711a047a765fe9976a30b748050f
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
