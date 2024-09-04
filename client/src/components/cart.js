@@ -63,7 +63,6 @@ export default function Cart() {
       // 2. Dispatch the action to remove all items from the cart
       dispatch(removeAllItemsFromCart());
 
-<<<<<<< HEAD
         // 3. Reset the local state for cart items
         setCartItems([]);
         
@@ -71,7 +70,6 @@ export default function Cart() {
         toast.success("Cart cleared successfully", {
             position: "bottom-right",
         });
-=======
       // 3. Reset the local state for cart items and total
       setCartItems([]);
       setTotal(0);
@@ -80,7 +78,7 @@ export default function Cart() {
       toast.success("Cart cleared successfully", {
         position: "bottom-right",
       });
->>>>>>> dc85e3a57a58711a047a765fe9976a30b748050f
+
     } catch (error) {
       // Handle any errors during the dispatch
       toast.error(`Failed to clear cart: ${error.message}`, {
