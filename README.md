@@ -56,10 +56,11 @@ Foodlie is an online food ordering website where users can browse menus, add ite
 # Install backend dependencies
 ```cd backend
 npm install
-
+```
 # Install frontend dependencies
 ```cd ../client
 npm install
+```
 
 3.    **Running the Application**
 
