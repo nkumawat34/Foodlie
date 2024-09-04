@@ -14,7 +14,7 @@ export default function SignUp() {
 
   const register=()=>{
    
-    axios.post("http://localhost:3001/api/auth/signup",{
+    axios.post("https://foodlie-backend.onrender.com/api/auth/signup",{
         "name": name,
         "email": email,
         "password": password,
