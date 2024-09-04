@@ -1,0 +1,42 @@
+{
+    "images":
+    [
+        {
+            "name":"burger",
+            "description":"It is small oven shape type deleicious food",
+            "price":"100",
+            "off_price":"50"
+        },
+        {
+            "name":"pizza",
+            "description":"It is small oven shape type deleicious food",
+            "price":"200",
+            "off_price":"100"
+        },
+        {
+            "name":"dosa",
+            "description":"It is special dish which are made for the south indian people",
+            "price":"150",
+            "off_price":"75"
+        },
+        {
+            "name":"idli",
+            "description":"It is served with sambhar and delicious food",
+            "price":"400",
+            "off_price":"200"
+        },
+        {
+            "name":"bread_pakora",
+            "description":"It is spicy and  deleicious food server with chutneyS",
+            "price":"300",
+            "off_price":"150"
+        },
+        {
+            "name":"tandoori_chicken",
+            "description":"It is made for non veg people and it is very delivous but spicy food",
+            "price":"800",
+            "off_price":"400"
+        }
+    ]
+
+}

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Menu from '../Assets/menu.jpg'
 import { FaPlayCircle } from "react-icons/fa";
-import Bread_Pakora from '../Assets/bread_pakora.jpg'
-import Burger from '../Assets/burger.jpg'
-import Dosa from '../Assets/dosa.jpg'
-import Idli from '../Assets/idli.jpg'
-import Tandoori_Chicken from '../Assets/tandoori_chicken.jpg'
-import Pizza from '../Assets/pizza.jpg'
+
 import { IoMdArrowBack } from "react-icons/io";
 import { IoArrowForward } from "react-icons/io5";
+<<<<<<< HEAD
+//import Images1 from './images.json'
+=======
 import Images1 from './images.json'
+>>>>>>> dc85e3a57a58711a047a765fe9976a30b748050f
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
@@ -17,7 +16,7 @@ export default function Homepage() {
   const [images,setImages]=useState(["Bread_Pakora","Burger","Dosa","Pizza"])
   
  // This line copies the array from the JSON file into the state
- const [images1, setImages1] = useState([...Images1.images]);
+ const [images1, setImages1] = useState([]);
 const navigate=useNavigate()
   
   const backward=()=>{
@@ -30,7 +29,15 @@ const navigate=useNavigate()
   const forward = () => {
     setImages([images[images.length - 1], ...images.slice(0, images.length - 1)]);
   };
-  
+  useEffect(() => {
+    fetch('/images.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Ensure data is loaded correctly
+        setImages1(data.images);
+      })
+      .catch(error => console.error('Error fetching images:', error));
+  }, []);
   return (
     <div>
     <div className='flex justify-center flex-wrap'>
