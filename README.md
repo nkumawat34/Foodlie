@@ -68,7 +68,7 @@ npm install
 
 3.1   #Start the backend server:
 ```cd backend
-npm start
+nodemon index.js
 ````
 3.2    #Start the Frontend 
 
