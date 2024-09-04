@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
 
-  const [images,setImages]=useState(["Bread_Pakora","Burger","Dosa","Pizza"])
+  const [images,setImages]=useState(["bread_pakora","burger","dosa","pizza"])
   
  // This line copies the array from the JSON file into the state
  const [images1, setImages1] = useState([]);
