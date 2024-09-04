@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
-import { addItemToCart, fetchCart, removeItemFromCart, increaseItemQuantity, decreaseItemQuantity, removeAllItemsFromCart } from './CartSlice';
+import { addItemToCart, fetchCart, removeItemFromCart,increaseItemQuantity,decreaseItemQuantity,removeAllItemsFromCart } from './CartSlice';
+import { addOrder } from './OrderSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { addOrderAsync } from './OrderSlice';
 
 export default function Cart() {
   const { products, loading } = useSelector(state => state.cart);
+
   const dispatch = useDispatch();
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -19,10 +21,11 @@ export default function Cart() {
   }, [dispatch]);
 
   useEffect(() => {
+   
     // Update cartItems whenever products change
     setCartItems(products);
-
-    // Calculate total price whenever products or cartItems change
+    
+    // lcuCalate total price whenever products or cartItems change
     let total1 = 0;
     products.forEach(product => {
       total1 += product.price * product.quantity;
@@ -38,7 +41,10 @@ export default function Cart() {
           : item
       );
     });
-    dispatch(increaseItemQuantity(product));
+    dispatch(increaseItemQuantity(product)
+    )
+    // Optional: You can dispatch an action to update the cart in Redux store
+
   };
 
   const decreaseQuantity = (product) => {
@@ -52,43 +58,34 @@ export default function Cart() {
         .filter(item => item.quantity > 0); // Remove if quantity is 0
     });
 
-    dispatch(decreaseItemQuantity(product));
+    dispatch(decreaseItemQuantity(product))
+    // Optional: You can dispatch an action to update the cart in Redux store
   };
 
   const clearcart = async () => {
     try {
-      // 1. Dispatch the action to add the order
-      await dispatch(addOrderAsync(cartItems)).unwrap();
+        // 1. Dispatch the action to add the order
+        await dispatch(addOrderAsync(cartItems)).unwrap();
 
-      // 2. Dispatch the action to remove all items from the cart
-      dispatch(removeAllItemsFromCart());
-
-<<<<<<< HEAD
+        // 2. Dispatch the action to remove all items from the cart
+        dispatch(removeAllItemsFromCart());
+        setTotal(total);
         // 3. Reset the local state for cart items
         setCartItems([]);
-        
+        window.location.reload();
         // 4. Show a success message
         toast.success("Cart cleared successfully", {
             position: "bottom-right",
         });
-=======
-      // 3. Reset the local state for cart items and total
-      setCartItems([]);
-      setTotal(0);
-
-      // 4. Show a success message
-      toast.success("Cart cleared successfully", {
-        position: "bottom-right",
-      });
->>>>>>> dc85e3a57a58711a047a765fe9976a30b748050f
     } catch (error) {
-      // Handle any errors during the dispatch
-      toast.error(`Failed to clear cart: ${error.message}`, {
-        position: "bottom-right",
-      });
-      console.error('Error:', error);
+        // Handle any errors during the dispatch
+        toast.error(`Failed to clear cart: ${error.message}`, {
+            position: "bottom-right",
+        });
+        console.error('Error:', error);
     }
-  };
+};
+
 
   return (
     <>
@@ -130,7 +127,7 @@ export default function Cart() {
             <div className='flex justify-center mr-[15%] text-3xl'>Total Price: ${total}</div>
           </div>
           <div className='flex justify-center'>
-            <button className='bg-lime-500 p-3 mt-5' onClick={clearcart}>Proceed To Payment</button>
+            <button className='bg-lime-500 p-3 mt-5' onClick={() => {clearcart()}}>Proceed To Payment</button>
           </div>
         </div>
         : <div className='flex justify-center text-3xl mt-5'>Sorry, no items in the cart</div>}
