@@ -15,7 +15,7 @@ export default function Login() {
     const dispatch=useDispatch()
     const signin=()=>{
 
-        axios.post("http://localhost:3001/api/auth/login",{
+        axios.post("https://foodlie-backend.onrender.com/api/auth/login",{
             "email": email,
             "password": password
         }).then((data)=>{
