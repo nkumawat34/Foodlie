@@ -68,10 +68,10 @@ export default function Cart() {
         await dispatch(addOrderAsync(cartItems)).unwrap();
 
         // 2. Dispatch the action to remove all items from the cart
-      //  dispatch(removeAllItemsFromCart());
+        dispatch(removeAllItemsFromCart());
 
         // 3. Reset the local state for cart items
-        //setCartItems([]);
+        setCartItems([]);
 
         // 4. Show a success message
         toast.success("Cart cleared successfully", {

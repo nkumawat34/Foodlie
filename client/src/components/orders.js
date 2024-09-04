@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders } from './OrderSlice';
 
@@ -7,9 +7,10 @@ export default function Orders() {
   const products = useSelector(state => state.order.orders);
   const status = useSelector(state => state.order.status);
   const error = useSelector(state => state.order.error);
-
+  const [token,setToken]=useState('')
   useEffect(() => {
     // Fetch orders when the component mounts
+    if(localStorage.getItem('email'))
     dispatch(fetchOrders());
   }, [dispatch]);
 
@@ -18,7 +19,11 @@ export default function Orders() {
     console.log("Products:", products);
   }, [products]);
 
- 
+  useEffect(()=>{
+
+    const token=localStorage.getItem("token")
+    setToken(token)
+  })
  // Handle loading and error states
  if (status === 'loading') {
   return <p>Loading...</p>;
@@ -28,8 +33,9 @@ export default function Orders() {
   }
 
   return (
+  
     <div>
-      
+      {token?
       <div className='flex flex-col'>
         <h1 className='text-center text-4xl'>Orders</h1>
         {products.length === 0 ? (
@@ -49,7 +55,8 @@ export default function Orders() {
             </div>
           ))
         )}
-      </div>
+      </div>:<h1 className='text-3xl text-center mt-5'>Please Sign in</h1>
+      }
     </div>
   );
 }

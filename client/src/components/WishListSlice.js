@@ -23,8 +23,16 @@ export const addWishlistItem = createAsyncThunk(
   async (item, { rejectWithValue }) => {
     try {
       const email=localStorage.getItem("email")
-      
-      const response = await axios.post(`http://localhost:3001/api/wishlistitem/${email}`,{item});
+      const token=localStorage.getItem("token")
+      const response = await axios.post(
+        `http://localhost:3001/api/wishlistitem/${email}`,
+        { item },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          },
+        }
+      );
       toast.success('Item added to wishlist!');
       return response.data;
     } catch (error) {
@@ -42,8 +50,15 @@ export const removeWishlistItem = createAsyncThunk(
     try {
      
       const email=localStorage.getItem("email")
-    
-      await axios.delete(`http://localhost:3001/api/wishlistitem/${email}/${name}`);
+      const token=localStorage.getItem("token")
+      const response = await axios.delete(
+        `http://localhost:3001/api/wishlistitem/${email}/${name}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          },
+        }
+      );
      // window.location.reload()
       toast.success('Item removed from wishlist!');
       return name;

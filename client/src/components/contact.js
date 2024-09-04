@@ -11,7 +11,7 @@ export default function contact() {
          
         </div>
       </div>
-      <div className='flex flex-wrap justify-center sm:justify-start sm:ml-[10%] '>
+      <div className='flex flex-wrap justify-center sm:justify-start sm:ml-[10%]  max-w-screen-lg'>
       <div className='mt-5 order-2 md:order-1'>
         <h1 className='text-2xl ml-[10%]'>Get In Touch</h1>
         <p className=' mt-[5%] ml-[8%]'>Email:nkumawat34@gmail.com</p>

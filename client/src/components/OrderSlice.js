@@ -27,6 +27,7 @@ export const addOrderAsync = createAsyncThunk(
         try {
             // Retrieve email from localStorage
             const email = localStorage.getItem("email");
+            const token=localStorage.getItem("token")
 
             if (!email) {
                 throw new Error('User email not found in localStorage');
@@ -35,7 +36,15 @@ export const addOrderAsync = createAsyncThunk(
             console.log("Order before sending to backend:", order);
 
             // Send POST request to the server with the order data
-            const response = await axios.post(`http://localhost:3001/api/orders/${email}`, { order });
+            const response = await axios.post(
+                `http://localhost:3001/api/orders/${email}`,
+                { order },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+                  },
+                }
+              );
 
             console.log("Response from server:", response.data);
 

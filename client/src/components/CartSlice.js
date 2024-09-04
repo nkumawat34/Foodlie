@@ -1,6 +1,7 @@
 // src/slices/cartSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 // Define the initial state
@@ -12,6 +13,8 @@ const initialState = {
 };
 
 // Async thunks
+
+
 export const fetchCart = createAsyncThunk(
   'cart/fetchCart',
   async () => {
@@ -25,8 +28,17 @@ export const addItemToCart = createAsyncThunk(
   'cart/addItemToCart',
   async (item) => {
     try {
+      const token=localStorage.getItem("token")
       const email = localStorage.getItem("email");
-      const response = await axios.post(`http://localhost:3001/api/cart/item/${email}`, { item });
+      const response = await axios.post(
+        `http://localhost:3001/api/cart/item/${email}`,
+        { item },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          },
+        }
+      );
       return response.data; 
     } catch (error) {
       return { error: error.response ? error.response.data : error.message };
@@ -40,9 +52,16 @@ export const removeAllItemsFromCart = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const email = localStorage.getItem("email");
-     
+      const token=localStorage.getItem("token")
       // Send a DELETE request to clear the cart
-      await axios.delete(`http://localhost:3001/api/cart/clear/${email}`);
+      const response = await axios.delete(
+        `http://localhost:3001/api/cart/clear/${email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          },
+        }
+      );;
       
       return; // Return nothing on success
     } catch (error) {
@@ -56,8 +75,15 @@ export const removeItemFromCart = createAsyncThunk(
   'cart/removeItemFromCart',
   async (product) => {
     const email = localStorage.getItem("email");
-    
-    await axios.delete(`http://localhost:3001/api/cart/item/${email}/${product.name}`);
+    const token=localStorage.getItem("token")
+    const response = await axios.delete(
+      `http://localhost:3001/api/cart/item/${email}/${product.name}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+        },
+      }
+    );
     window.location.reload();
 
     return product.name
@@ -68,7 +94,16 @@ export const increaseItemQuantity = createAsyncThunk(
   'cart/increaseItemQuantity',
   async (item) => {
     const email = localStorage.getItem("email");
-    const response = await axios.put(`http://localhost:3001/api/cart/item/increase/${email}`, { item });
+    const token=localStorage.getItem("token")
+    const response = await axios.put(
+      `http://localhost:3001/api/cart/item/increase/${email}`,
+      { item },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+        },
+      }
+    );
     return response.data;
   }
 );
@@ -77,7 +112,16 @@ export const decreaseItemQuantity = createAsyncThunk(
   'cart/decreaseItemQuantity',
   async (item) => {
     const email = localStorage.getItem("email");
-    const response = await axios.put(`http://localhost:3001/api/cart/item/decrease/${email}`, { item });
+    const token=localStorage.getItem("token")
+    const response = await axios.put(
+      `http://localhost:3001/api/cart/item/decrease/${email}`,
+      { item },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+        },
+      }
+    );
     return response.data;
   }
 );
