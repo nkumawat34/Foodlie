@@ -12,7 +12,7 @@ export const fetchOrders = createAsyncThunk(
             const email = localStorage.getItem("email");
             if (!email) throw new Error('User email not found in localStorage');
 
-            const response = await axios.get(`http://localhost:3001/api/orders/${email}`);
+            const response = await axios.get(`https://foodlie-backend.onrender.com/api/orders/${email}`);
             return response.data; // Assuming response.data is an array of orders
         } catch (error) {
             return rejectWithValue(error.response ? error.response.data : error.message);
@@ -37,7 +37,7 @@ export const addOrderAsync = createAsyncThunk(
 
             // Send POST request to the server with the order data
             const response = await axios.post(
-                `http://localhost:3001/api/orders/${email}`,
+                `https://foodlie-backend.onrender.com/api/orders/${email}`,
                 { order },
                 {
                   headers: {
