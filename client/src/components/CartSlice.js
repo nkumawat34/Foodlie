@@ -19,7 +19,7 @@ export const fetchCart = createAsyncThunk(
   'cart/fetchCart',
   async () => {
     const email = localStorage.getItem("email");
-    const response = await axios.get(`http://localhost:3001/api/cart/${email}`);
+    const response = await axios.get(`https://foodlie-backend.onrender.com/api/cart/${email}`);
     return response.data;
   }
 );
@@ -55,7 +55,7 @@ export const removeAllItemsFromCart = createAsyncThunk(
       const token=localStorage.getItem("token")
       // Send a DELETE request to clear the cart
       const response = await axios.delete(
-        `http://localhost:3001/api/cart/clear/${email}`,
+        `https://foodlie-backend.onrender.com/api/cart/clear/${email}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the Authorization header
@@ -77,7 +77,7 @@ export const removeItemFromCart = createAsyncThunk(
     const email = localStorage.getItem("email");
     const token=localStorage.getItem("token")
     const response = await axios.delete(
-      `http://localhost:3001/api/cart/item/${email}/${product.name}`,
+      `https://foodlie-backend.onrender.com/api/cart/item/${email}/${product.name}`,
       {
         headers: {
           Authorization: `Bearer ${token}`, // Add the token to the Authorization header
@@ -96,7 +96,7 @@ export const increaseItemQuantity = createAsyncThunk(
     const email = localStorage.getItem("email");
     const token=localStorage.getItem("token")
     const response = await axios.put(
-      `http://localhost:3001/api/cart/item/increase/${email}`,
+      `https://foodlie-backend.onrender.com/api/cart/item/increase/${email}`,
       { item },
       {
         headers: {
@@ -114,7 +114,7 @@ export const decreaseItemQuantity = createAsyncThunk(
     const email = localStorage.getItem("email");
     const token=localStorage.getItem("token")
     const response = await axios.put(
-      `http://localhost:3001/api/cart/item/decrease/${email}`,
+      `https://foodlie-backend.onrender.com/api/cart/item/decrease/${email}`,
       { item },
       {
         headers: {
