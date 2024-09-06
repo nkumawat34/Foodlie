@@ -112,7 +112,7 @@ const wishListSlice = createSlice({
       })
       .addCase(removeWishlistItem.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = state.items.filter(item => item.id !== action.payload);
+        state.items = state.items.filter(item => item.name !== action.payload);
       })
       .addCase(removeWishlistItem.rejected, (state, action) => {
         state.status = 'failed';
