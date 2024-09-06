@@ -19,7 +19,7 @@ export default function Wishlist() {
 
   const handleRemove = (productName) => {
     dispatch(removeWishlistItem(productName));
-    window.location.reload();
+   // window.location.reload();
     toast.warn("Item Deleted", {
       position: "bottom-right"
     });
