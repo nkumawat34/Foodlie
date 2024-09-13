@@ -7,29 +7,35 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { add_user } from './UserSlice';
+import Circle from 'react-loader-spinner'
 export default function Login() {
 
     const navigate=useNavigate()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
+    const [loading,setLoading]=useState(false)
     const dispatch=useDispatch()
+
     const signin=()=>{
 
+
+        setLoading(true)
         axios.post("https://foodlie-backend.onrender.com/api/auth/login",{
             "email": email,
             "password": password
         }).then((data)=>{
-           
+            setLoading(false)
             dispatch(add_user({name:"",email:email}))
             navigate("/")
             localStorage.setItem('token',data.data.token);
             localStorage.setItem('email',email)
-            toast.success("SignUp Successful",{
+            toast.success("Signin Successful",{
                 position:"bottom-right"
             })
         })
         .catch((err)=>{
             console.log(err)
+            setLoading(false)
             toast.error("Error in Signin",{
                 position:"bottom-right"
             })
@@ -65,6 +71,7 @@ export default function Login() {
             </div>
 
         </div>
+     
         <ToastContainer />
     </div>
   )

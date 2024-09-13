@@ -37,11 +37,11 @@ const navigate=useNavigate()
     <div>
     <div className='flex justify-center flex-wrap'>
         <div className='flex flex-col items-center justify-center m-4'>
-            <h1 className='text-6xl'>Claim Best Offer</h1>
-            <h1 className='text-6xl'>on Fast <span className='text-red-400'>Food</span>&</h1>
-            <h1 className='text-6xl text-red-400'>Restaurent</h1>
-            <p1 className='text-2xl mt-4'>Our job is fulfill the customer need according</p1>
-            <p1 className='text-2xl mt-1'>to their requirement so please carry on</p1>
+            <h1 className='xl:text-6xl lg:text-4xl sm:text-4xl text-3xl'>Claim Best Offer</h1>
+            <h1 className='xl:text-6xl lg:text-4xl sm:text-4xl text-3xl'>on Fast <span className='text-red-400'>Food</span>&</h1>
+            <h1 className='xl:text-6xl lg:text-4xl sm:text-4xl text-3xl text-red-400'>Restaurent</h1>
+            <p1 className='sm:text-2xl text-1xl mt-4'>Our job is fulfill the customer need according</p1>
+            <p1 className='sm:text-2xl text-1xl mt-1'>to their requirement so please carry on</p1>
             <div className='flex'><button className='bg-red-400 px-6 rounded-full mt-4 mx-3'>Get Started</button>
             <div className='mt-4 p-3 flex border rounded-full'><FaPlayCircle color='yellow' size={50} /><button className='mx-2'>Watch Video</button></div>
             </div>
