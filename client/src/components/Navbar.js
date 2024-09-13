@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <div>
 <nav class='flex justify-between mt-3 max-w-screen-lg'>
-<div className='md:hidden visible'>
+<div className='lg:hidden visible'>
 
 <button onClick={toggleMenu}  className='ml-[50px] border'><RxHamburgerMenu /></button>
   <ul className={`flex flex-col relative left-[10%] ${isMenuVisible ? '' : 'hidden'} relative `} id="menu">
@@ -66,7 +66,7 @@ export default function Navbar() {
 
 </div>
 
-<div className='md:visible invisible  ml:ml-0 xl:ml-[5%]'>
+<div className=' invisible lg:visible   ml:ml-0 xl:ml-[5%]'>
   <ul className='flex gap-5'>
     <button className='p-3 hover:underline underline-offset-8 decoration-4' onClick={()=>navigate("/")}>Home</button>
     <button className='p-3 hover:underline underline-offset-8 decoration-4' onClick={()=>navigate("/dishes")} >Dishes</button>
@@ -74,7 +74,7 @@ export default function Navbar() {
     <button className='p-3 hover:underline underline-offset-8 decoration-4' onClick={()=>navigate("/contact")}>Contact</button>
   </ul>
 </div>
-<div className='flex gap-3 relative mt-3  ml-[10%]'>
+<div className="flex gap-3 relative mt-3 ml-[10%] hidden lg:flex">
   <input className='max-w-200px max-h-[50px] border border-grey-700 rounded-full' onChange={(e)=>{setSearchbar(e.target.value);navigate("/search",{
     state:{
       searchterm:e.target.value
