@@ -8,6 +8,7 @@ const authRoutes = require('./routes/UserRoutes'); // Adjust the path as needed
 const itemRoutes=require("./routes/ItemRoutes")
 const wishlistRoutes=require("./routes/WishListItemRoutes")
 const orderRoutes=require('./routes/OrderRoutes')
+const contactRoutes=require('./routes/contactRoutes')
 const cors=require('cors')
 // Load environment variables
 dotenv.config();
@@ -28,6 +29,9 @@ app.use('/api', orderRoutes); // Prefix all routes with /api
 app.use('/api/wishlistitem',wishlistRoutes)
 // Routes
 app.use('/api', itemRoutes); // Prefix all item routes with /api
+
+// Use the contact routes
+app.use('/api', contactRoutes);
 // Database connection
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

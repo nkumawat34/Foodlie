@@ -89,7 +89,7 @@ export default function Cart() {
 
   return (
     <>
-      {products.length > 0 ?
+      {cartItems.length > 0 ?
         <div>
           <h1 className='text-center text-3xl mt-5'>Your Shopping Cart</h1>
           <div className='flex ml-[15%] gap-4 mt-5'>
